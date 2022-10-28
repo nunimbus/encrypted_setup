@@ -68,6 +68,10 @@ class Version1000Date20221023 extends SimpleMigrationStep {
 		// Disable the master key
 		$server->getConfig()->setAppValue('encryption', 'useMasterKey', '0');
 
+		$server->getAppManager()->disableApp('encrypted_setup');
+		$installer = $server->get('OC\Installer');
+		$installer->removeApp('encrypted_setup');
+
 		return $schema;
 	}
 }
