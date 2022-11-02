@@ -3,8 +3,8 @@
 	  xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
 	<id>encrypted_setup</id>
 	<name>Encrypted Setup</name>
-	<summary>Register a custom log class in Nextcloud</summary>
-	<description>Register a custom log class in Nextcloud</description>
+	<summary>Enable encrypted storage during system installation.</summary>
+	<description>This app enables server-side encryption, encrypts all files, and disables the master key during the installation process. Once finished, the app removes itself.</description>
 	<version>1.0.0</version>
 	<licence>agpl</licence>
 	<author>Andrew Summers</author>
@@ -15,6 +15,6 @@
 	</types>
 	<category>tools</category>
 	<dependencies>
-		<nextcloud min-version="20" max-version="25" />
+		<nextcloud min-version="24" max-version="25" />
 	</dependencies>
 </info>
