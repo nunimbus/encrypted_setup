@@ -48,7 +48,8 @@ class Version1000Date20221023 extends SimpleMigrationStep {
 		// This has to be in a Migration package because it runs prior to any apps loading (and thus, any files being created)
 
 		// Set the `skeletondirectory` to empty - the encryption functions don't handle these files well durring install
-		$server->getConfig()->setSystemValue('skeletondirectory', "");
+		//$skeletonDir = $server->getConfig()->getSystemValue('skeletondirectory');
+		//$server->getConfig()->setSystemValue('skeletondirectory', "");
 
 		// Enable the encryption app and load it
 		$server->getAppManager()->enableApp('encryption');
@@ -72,6 +73,12 @@ class Version1000Date20221023 extends SimpleMigrationStep {
 		$server->getConfig()->setAppValue('encryption', 'useMasterKey', '0');
 
 		// Clean up and remove the app
+		//$server->getConfig()->setSystemValue('skeletondirectory', $skeletonDir);
+
+		//if ($skeletonDir == "") {
+		//	$server->getConfig()->deleteSystemValue('skeletondirectory');
+		//}
+
 		$appId = OC::$server->get('OC\AppFramework\App')->getAppIdForClass(get_class($this));
 		$qb = OC::$server->get('OC\DB\QueryBuilder\QueryBuilder');
 		$qb->delete('migrations')->where($qb->expr()->eq('app', $qb->createNamedParameter($appId)));
